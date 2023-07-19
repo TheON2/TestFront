@@ -35,26 +35,26 @@ const Detail = () => {
       },
     }
   );
-  const {
-    isError: contentError,
-    data: contentArr,
-    isSuccess: contentSuccess,
-  } = useQuery(["content", params.id], () => getContents(params.id), {
-    onSuccess: (data) => {},
-  });
-  const {
-    isError: commentError,
-    data: commentArr,
-    isSuccess: commentSuccess,
-  } = useQuery(["comment", params.id], () => getComments(params.id), {
-    onSuccess: (data) => {},
-  });
+  // const {
+  //   isError: contentError,
+  //   data: contentArr,
+  //   isSuccess: contentSuccess,
+  // } = useQuery(["content", params.id], () => getContents(params.id), {
+  //   onSuccess: (data) => {},
+  // });
+  // const {
+  //   isError: commentError,
+  //   data: commentArr,
+  //   isSuccess: commentSuccess,
+  // } = useQuery(["comment", params.id], () => getComments(params.id), {
+  //   onSuccess: (data) => {},
+  // });
 
   useEffect(() => {
-    if (isSuccess && contentSuccess && commentSuccess) {
+    if (isSuccess) {
       setLoad(false);
     }
-  }, [isSuccess, contentSuccess, commentSuccess]);
+  }, [isSuccess]);
 
   if (isError) {
     return <div>Error occurred</div>;
@@ -70,8 +70,6 @@ const Detail = () => {
 
   return (
     isSuccess &&
-    contentSuccess &&
-    commentSuccess &&
     !load && (
       <>
         {!update ? (
@@ -84,33 +82,27 @@ const Detail = () => {
               c2={splitCategories[1]}
               c3={splitCategories[2]}
               c4={splitCategories[3]}
-              userProfileUrl={user.imageUrl}
               setUpdate={setUpdate}
               recipeId={params.id}
-              userLiked={recipe.userLiked}
               userId={recipe.user_id}
             />
 
             <DetailContainer2 material={recipe.ingredient} />
-            {contentArr?.map((step, idx) => (
+            {recipe.contentResponseDtoList?.map((step, idx) => (
               <DetailContainer3 content={step.content} idx={idx} />
             ))}
-            <DetailContainer4
-              nickName={user.nickName}
-              imageUrl={user.imageUrl}
-              profileContent={user.profileContent}
-            />
-            <DetailContainer5
+            <DetailContainer4 nickName={user.nickName} />
+            {/* <DetailContainer5
               comments={commentArr}
               recipeId={recipe.id}
               user={user}
-            />
+            /> */}
             <DetailContainer6 recipeId={recipe.id} />
           </div>
         ) : (
           <Update
             user={user}
-            content={contentArr}
+            content={recipe.contentResponseDtoList}
             recipe={recipe}
             update={update}
             setUpdate={setUpdate}

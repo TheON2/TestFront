@@ -104,7 +104,9 @@ const Write = () => {
     const joinedCategories = categories.join("^.^");
 
     formData.append("id", uuidv4() || "");
-    formData.append("file", file || "");
+    if (file !== null) {
+      formData.append("file", file || "");
+    }
     formData.append("title", title || "");
     formData.append("subtitle", subtitle || "");
     formData.append("category", joinedCategories);
