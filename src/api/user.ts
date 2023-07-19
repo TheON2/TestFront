@@ -35,7 +35,7 @@ const getUsers = async (): Promise<User[]> => {
 };
 
 const getAuthToken = async (): Promise<string> => {
-  const response = await api.get(`/api/token`);
+  const response = await api.get(`/api/user/token`);
   return response.data;
 };
 

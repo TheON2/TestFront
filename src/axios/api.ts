@@ -1,5 +1,5 @@
 import axios from "axios";
-import {UNAUTH_USER} from "../redux/reducers/userSlice";
+import { UNAUTH_USER } from "../redux/reducers/userSlice";
 import store from "../redux/config/configStore";
 
 const instance = axios.create({
