@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ProfileContainer = styled.div`
   text-align: center;
-  backgroundColor: white;
+  background-color: white;
   margin: 10px;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow:
-          0 14px 28px rgba(0, 0, 0, 0.25),
-          0 10px 10px rgba(0, 0, 0, 0.22);
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
 `;
 
@@ -52,7 +52,7 @@ export const ProfileDescription = styled.div`
   margin: 0 auto;
   text-align: center;
   p {
-    color: ${props => props.theme.scndFontColor};
+    color: ${(props) => props.theme.scndFontColor};
   }
 `;
 
@@ -72,8 +72,8 @@ export const ProfileOptions = styled.ul`
     width: 99px;
     line-height: 60px;
     text-align: center;
-    -webkit-transition: background .3s;
-    transition: background .3s;
+    -webkit-transition: background 0.3s;
+    transition: background 0.3s;
     &:hover {
       text-decoration: none;
       background: #50597b;

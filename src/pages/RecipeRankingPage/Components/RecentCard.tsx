@@ -28,7 +28,7 @@ const RecentCard = ({imageUrl, title, nickName, style, cardNumber}) => {
                         {nickName ? nickName : "Cook Master"}
                     </Card.Text>
                 </Card.Body>
-            </Card>
+            </Card>z
         </Link>
     );
 };
