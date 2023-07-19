@@ -84,7 +84,7 @@ const Detail = () => {
               c4={splitCategories[3]}
               setUpdate={setUpdate}
               recipeId={params.id}
-              userId={recipe.user_id}
+              userId={recipe.email}
             />
 
             <DetailContainer2 material={recipe.ingredient} />
