@@ -12,7 +12,7 @@ interface User {
 interface NewUser {
   email: string;
   password: string;
-  nickName: string;
+  nickname: string;
 }
 
 interface LoginUser {

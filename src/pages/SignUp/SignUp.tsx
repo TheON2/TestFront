@@ -80,7 +80,7 @@ const SignUp = () => {
     const newUser = {
       email,
       password,
-      nickName,
+      nickname: nickName,
     };
     addUser_mutate(newUser);
     console.log(`Email: ${email}, Password: ${password}`);
