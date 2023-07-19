@@ -21,7 +21,7 @@ const RecipeRankingPage = () => {
         <>
             <h1>Recipe Ranking</h1>
             {sortedRecipes.map((recipe,idx) =>
-                <RecentCard key={recipe.id} title={recipe.title} subtitle={recipe.subtitle} id={recipe.id} cardNumber={idx+1}/>
+                <RecentCard key={recipe.id} title={recipe.title} subtitle={recipe.subtitle} id={recipe.id} cardNumber={idx+1} imageUrl={recipe.url} likeCount={recipe.likeCount}/>
             )}
         </>
     );

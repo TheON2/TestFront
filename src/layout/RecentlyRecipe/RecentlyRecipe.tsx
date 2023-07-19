@@ -29,7 +29,7 @@ const RecentlyRecipe = () => {
             </Link>
             <Container2>
             {sortedRecipes.map((recipe,idx) =>
-                <RecentCard key={recipe.id} title={recipe.title} subtitle={recipe.subtitle} id={recipe.id} cardNumber={idx+1}/>
+                <RecentCard key={recipe.id} title={recipe.title} subtitle={recipe.subtitle} id={recipe.id} cardNumber={idx+1} imageUrl={recipe.url}/>
             )}
             </Container2>
         </>
