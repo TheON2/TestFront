@@ -19,19 +19,19 @@ const instance = axios.create({
 //   return Promise.reject(error);
 // });
 
-instance.interceptors.response.use((response) => {
-  if (response.status === 501) {
-    console.log('토큰이 존재하지 않습니다')
-    store.dispatch(UNAUTH_USER());
-  }
-  return response;
-}, (error) => {
-  if (error.response && (error.response.status === 501 || error.response.status === 403)) {
-    console.log('토큰이 존재하지 않습니다')
-    store.dispatch(UNAUTH_USER());
-  }
-  return Promise.reject(error);
-});
+// instance.interceptors.response.use((response) => {
+//   if (response.status === 501) {
+//     console.log('토큰이 존재하지 않습니다')
+//     store.dispatch(UNAUTH_USER());
+//   }
+//   return response;
+// }, (error) => {
+//   if (error.response && (error.response.status === 501 || error.response.status === 403)) {
+//     console.log('토큰이 존재하지 않습니다')
+//     store.dispatch(UNAUTH_USER());
+//   }
+//   return Promise.reject(error);
+// });
 
 // instance.interceptors.response.use((response) => {
 //   return response;
