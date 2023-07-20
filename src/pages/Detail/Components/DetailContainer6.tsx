@@ -25,11 +25,15 @@ const DetailContainer6 = ({ nickName, imageUrl, recipeId }) => {
     useMutation(addComment, {
       onMutate: async (newComment) => {
         console.log(newComment);
-        const oldData = queryClient.getQueryData(["comment", recipeId]);
-        queryClient.setQueryData(["comment", recipeId], (old) => [
-          ...old,
-          newComment.comment,
-        ]);
+        const oldData = queryClient.setQueryData(
+          ["comment", recipeId],
+          (old) => {
+            if (Array.isArray(old)) {
+              return [...old, newComment.comment];
+            }
+            return [newComment.comment];
+          }
+        );
         return { oldData };
       },
       onError: (err, newComment, context) => {
