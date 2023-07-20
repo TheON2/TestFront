@@ -62,7 +62,7 @@ const Update = ({ recipe, content, user, update, setUpdate }) => {
       console.log(recipe, content, user);
       setTitle(recipe.title);
       setSubtitle(recipe.subtitle);
-      setUrl(recipe.url);
+      setPreview(recipe.url);
       setTip(recipe.tip);
       setCategory1(category[0]);
       setCategory2(category[1]);
@@ -140,14 +140,14 @@ const Update = ({ recipe, content, user, update, setUpdate }) => {
 
     formData.append("id", uuidv4() || "");
     if (file !== null) {
-      formData.append("file", file || "");
+      formData.append("image", file || "");
     }
     formData.append("title", title || "");
     formData.append("subtitle", subtitle || "");
     formData.append("category", joinedCategories);
-    formData.append("ingredient", ingre);
+    formData.append("ingredients", ingre);
     formData.append("tip", tip || "");
-    formData.append("url", url || "");
+    formData.append("url", preview || "");
     formData.append("content", JSON.stringify(contentArr));
     formData.append("writerEmail", user.email || "");
     addRecipe_Mutate({ recipeId: recipe.id, formData });

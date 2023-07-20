@@ -11,6 +11,7 @@ const RecentCard = ({
   cardNumber,
   id,
   subtitle,
+  likeCount,
 }) => {
   const dispatch = useDispatch();
   const addRecipe = useCallback(() => {
@@ -65,6 +66,7 @@ const RecentCard = ({
         <Card.Body>
           <Card.Title>{title ? title : "대강 맛있는 요리 이름"}</Card.Title>
           <Card.Text>{nickName ? nickName : "Cook Master"}</Card.Text>
+          <Card.Text>{likeCount}</Card.Text>
         </Card.Body>
       </Card>
     </Link>

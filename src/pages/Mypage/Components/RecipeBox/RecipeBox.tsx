@@ -19,16 +19,12 @@ const RecipeBox = ({ imageUrl, title, subtitle, style, id, nickname }) => {
     <>
       <Link onClick={addRecipe} to={`/${id}`}>
         <Card
-          style={
-            style
-              ? style
-              : {
-                  width: "180px",
-                  height: "150px",
-                  display: "inline-block",
-                  margin: "20px",
-                }
-          }
+          style={{
+            width: "180px",
+            height: "200px",
+            display: "inline-flex",
+            margin: "20px",
+          }}
         >
           <Card.Img
             variant="top"

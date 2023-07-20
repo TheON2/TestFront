@@ -15,7 +15,7 @@ const Mypage = () => {
     (state: RootState) => state.user.user
   );
 
-  const userRecipes = data?.filter((recipe) => recipe.email === email) || [];
+  const userRecipes = data?.filter((recipe) => recipe.user_id === email) || [];
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred </div>;
@@ -46,7 +46,7 @@ const Mypage = () => {
                 title={recipe.title}
                 subtitle={recipe.subtitle}
                 imageUrl={recipe.url}
-                nickname={recipe.email}
+                nickname={recipe.user_id}
               />
             ))}
           </Container2>

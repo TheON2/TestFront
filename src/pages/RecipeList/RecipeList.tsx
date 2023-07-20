@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -80,28 +80,32 @@ const RecipeList = () => {
   const [selectedSituation, setSelectedSituation] = useState(situations[0]);
   const [selectedMethod, setSelectedMethod] = useState(methods[0]);
   const [selectedIngredient, setSelectedIngredient] = useState(ingredients[0]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
   const { data, isLoading, error } = useQuery("recipes", getRecipes);
   const recipes = data || [];
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error has occurred: {error.message}</div>;
-
-  const selectedCategories = [
+  useEffect(() => {
+    const filtered = recipes.filter((recipe) => {
+      const categories = recipe.category.split("^.^");
+      return (
+        categories[0] === selectedKind ||
+        categories[1] === selectedSituation ||
+        categories[2] === selectedMethod ||
+        categories[3] === selectedIngredient
+      );
+    });
+    setFilteredRecipes(filtered);
+  }, [
     selectedKind,
     selectedSituation,
     selectedMethod,
     selectedIngredient,
-  ];
+    recipes,
+  ]);
 
-  const filteredRecipes = recipes.filter((recipe) => {
-    const recipeCategories = recipe.category.split("^.^");
-    return selectedCategories.some((selectedCategory) => {
-      return (
-        selectedCategory !== null && recipeCategories.includes(selectedCategory)
-      );
-    });
-  });
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error has occurred: {error.message}</div>;
 
   return (
     <div>

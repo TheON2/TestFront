@@ -35,13 +35,13 @@ const Detail = () => {
       },
     }
   );
-  // const {
-  //   isError: contentError,
-  //   data: contentArr,
-  //   isSuccess: contentSuccess,
-  // } = useQuery(["content", params.id], () => getContents(params.id), {
-  //   onSuccess: (data) => {},
-  // });
+  const {
+    isError: contentError,
+    data: contentArr,
+    isSuccess: contentSuccess,
+  } = useQuery(["content", params.id], () => getContents(params.id), {
+    onSuccess: (data) => {},
+  });
   const {
     isError: commentError,
     data: commentArr,
@@ -51,10 +51,10 @@ const Detail = () => {
   });
 
   useEffect(() => {
-    if (isSuccess && commentSuccess) {
+    if (isSuccess && commentSuccess && contentSuccess) {
       setLoad(false);
     }
-  }, [isSuccess, commentSuccess]);
+  }, [isSuccess, commentSuccess, contentSuccess]);
 
   if (isError) {
     return <div>Error occurred</div>;
@@ -71,12 +71,12 @@ const Detail = () => {
   return (
     isSuccess &&
     commentSuccess &&
+    contentSuccess &&
     !load && (
       <>
         {!update ? (
           <div style={{ textAlign: "left" }}>
             <DetailContainer1
-              imageUrl={recipe.url}
               title={recipe.title}
               subtitle={recipe.subtitle}
               nickName={user.email}
@@ -86,11 +86,13 @@ const Detail = () => {
               c4={splitCategories[3]}
               setUpdate={setUpdate}
               recipeId={params.id}
-              userId={recipe.email}
+              userId={recipe.user_id}
+              imageUrl={recipe.url}
+              userLiked={recipe.userLiked}
             />
 
             <DetailContainer2 material={recipe.ingredient} />
-            {recipe.contentResponseDtoList?.map((step, idx) => (
+            {contentArr?.map((step, idx) => (
               <DetailContainer3 content={step.content} idx={idx} />
             ))}
             <DetailContainer4 nickName={user.nickName} />
@@ -104,7 +106,7 @@ const Detail = () => {
         ) : (
           <Update
             user={user}
-            content={recipe.contentResponseDtoList}
+            content={contentArr}
             recipe={recipe}
             update={update}
             setUpdate={setUpdate}
