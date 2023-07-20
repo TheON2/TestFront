@@ -48,7 +48,7 @@ const getContents = async (recipeId) => {
 };
 
 const getComments = async (recipeId) => {
-  const response = await api.get(`/api/recipe/comments/${recipeId}`);
+  const response = await api.get(`/api/recipe/comment/${recipeId}`);
   return response.data;
 };
 
