@@ -41,9 +41,6 @@ const RecipeBox = ({ imageUrl, title, subtitle, style, id, nickname }) => {
           />
           <Card.Body>
             <Card.Title>{title ? title : "대강 맛있는 요리 이름"}</Card.Title>
-            <Card.Text>
-              {subtitle ? subtitle : "이렇게 저렇게 요리하면 돼."}
-            </Card.Text>
           </Card.Body>
         </Card>
       </Link>
