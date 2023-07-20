@@ -24,6 +24,7 @@ const DetailContainer6 = ({ nickName, imageUrl, recipeId }) => {
   const { mutate: addComment_mutate, isLoading: addCommentLoading } =
     useMutation(addComment, {
       onMutate: async (newComment) => {
+        console.log(newComment);
         const oldData = queryClient.getQueryData(["comment", recipeId]);
         queryClient.setQueryData(["comment", recipeId], (old) => [
           ...old,
@@ -51,6 +52,7 @@ const DetailContainer6 = ({ nickName, imageUrl, recipeId }) => {
           writerEmail: user.email,
         },
       };
+      console.log("섬밋", newComment);
       addComment_mutate(newComment);
       setComment("");
     },
