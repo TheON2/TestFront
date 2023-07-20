@@ -75,6 +75,7 @@ const Detail = () => {
         {!update ? (
           <div style={{ textAlign: "left" }}>
             <DetailContainer1
+              imageUrl={recipe.url}
               title={recipe.title}
               subtitle={recipe.subtitle}
               nickName={user.email}
