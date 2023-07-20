@@ -96,9 +96,9 @@ const RecipeList = () => {
 
   const filteredRecipes = recipes.filter((recipe) => {
     const recipeCategories = recipe.category.split("^.^");
-    return selectedCategories.every((selectedCategory) => {
+    return selectedCategories.some((selectedCategory) => {
       return (
-        selectedCategory === null || recipeCategories.includes(selectedCategory)
+        selectedCategory !== null && recipeCategories.includes(selectedCategory)
       );
     });
   });
