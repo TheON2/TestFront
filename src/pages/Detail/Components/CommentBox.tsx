@@ -20,17 +20,20 @@ const CommentBox = ({
   const queryClient = useQueryClient();
   const mutation = useMutation(deleteComment, {
     onMutate: async (commentId) => {
-      const oldData = queryClient.setQueryData(
-        ["comment", recipeId],
-        (oldComments) =>
-          Array.isArray(oldComments)
-            ? oldComments.filter((comment) => comment.id !== commentId)
-            : []
+      await queryClient.cancelQueries(["comment", recipeId]);
+
+      const oldData = queryClient.getQueryData(["comment", recipeId]);
+
+      queryClient.setQueryData(["comment", recipeId], (oldComments) =>
+        Array.isArray(oldComments)
+          ? oldComments.filter((comment) => comment.id !== commentId)
+          : []
       );
-      return oldData;
+
+      return { oldData };
     },
-    onError: (err, variables, oldData) =>
-      queryClient.setQueryData(["comment", recipeId], oldData),
+    onError: (err, variables, context) =>
+      queryClient.setQueryData(["comment", recipeId], context.oldData),
     onSettled: () => {
       queryClient.invalidateQueries(["comment", recipeId]);
     },
