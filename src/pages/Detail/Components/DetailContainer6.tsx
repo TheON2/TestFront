@@ -49,12 +49,7 @@ const DetailContainer6 = ({ nickName, imageUrl, recipeId }) => {
       e.preventDefault();
       const newComment = {
         recipeId,
-        comment: {
-          recipeId,
-          comment,
-          commentId: uuidv4(),
-          writerEmail: user.email,
-        },
+        comment,
       };
       console.log("섬밋", newComment);
       addComment_mutate(newComment);
