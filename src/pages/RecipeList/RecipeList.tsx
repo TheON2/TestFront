@@ -76,10 +76,10 @@ const ingredients = [
 ];
 
 const RecipeList = () => {
-  const [selectedKind, setSelectedKind] = useState(null);
-  const [selectedSituation, setSelectedSituation] = useState(null);
-  const [selectedMethod, setSelectedMethod] = useState(null);
-  const [selectedIngredient, setSelectedIngredient] = useState(null);
+  const [selectedKind, setSelectedKind] = useState(kinds[0]);
+  const [selectedSituation, setSelectedSituation] = useState(situations[0]);
+  const [selectedMethod, setSelectedMethod] = useState(methods[0]);
+  const [selectedIngredient, setSelectedIngredient] = useState(ingredients[0]);
 
   const { data, isLoading, error } = useQuery("recipes", getRecipes);
   const recipes = data || [];

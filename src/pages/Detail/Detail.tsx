@@ -51,10 +51,10 @@ const Detail = () => {
   });
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && commentSuccess) {
       setLoad(false);
     }
-  }, [isSuccess]);
+  }, [isSuccess, commentSuccess]);
 
   if (isError) {
     return <div>Error occurred</div>;
@@ -70,6 +70,7 @@ const Detail = () => {
 
   return (
     isSuccess &&
+    commentSuccess &&
     !load && (
       <>
         {!update ? (

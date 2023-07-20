@@ -53,7 +53,9 @@ const getComments = async (recipeId) => {
 };
 
 const addComment = async (sendData) => {
+  console.log(sendData);
   const response = await api.post(`/api/recipe/comment`, sendData);
+  console.log(response);
 };
 
 const getComment = async (recipeId) => {
