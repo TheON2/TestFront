@@ -32,7 +32,7 @@ const DetailContainer5 = ({ comments, recipeId, user }) => {
             recipeId={recipeId}
             commentId={comment.id}
             nickName={comment.nickname}
-            userEmail={user.email}
+            userEmail={user.nickName}
             createdAt={comment.created_At}
           />
         ))}
