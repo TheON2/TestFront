@@ -92,11 +92,11 @@ const Detail = () => {
               <DetailContainer3 content={step.content} idx={idx} />
             ))}
             <DetailContainer4 nickName={user.nickName} />
-            <DetailContainer5
+            {/* <DetailContainer5
               comments={commentArr}
               recipeId={recipe.id}
               user={user}
-            />
+            /> */}
             <DetailContainer6 recipeId={recipe.id} />
           </div>
         ) : (
