@@ -3,11 +3,11 @@ import api from "../axios/api";
 const addRecipe = async (newRecipe: FormData) => {
   const config = {
     headers: {
-      'Content-Type': 'multipart/form-data'
-    }
+      "Content-Type": "multipart/form-data",
+    },
   };
 
-  console.log(newRecipe)
+  console.log(newRecipe);
   await api.post(`/api/recipe`, newRecipe, config);
 };
 
@@ -27,17 +27,17 @@ const getRecipe = async (recipeId) => {
 };
 
 const updateRecipe = async (sendData) => {
-  console.log(sendData)
+  console.log(sendData);
   const config = {
     headers: {
-      'Content-Type': 'multipart/form-data'
-    }
+      "Content-Type": "multipart/form-data",
+    },
   };
 
   await api.put(`/api/recipe/${sendData.recipeId}`, sendData.formData, config);
 };
 
-const deleteRecipe = async (recipeId:string) => {
+const deleteRecipe = async (recipeId: string) => {
   const response = await api.delete(`/api/recipe/${recipeId}`);
   return response.data;
 };
@@ -54,7 +54,7 @@ const getComments = async (recipeId) => {
 
 const addComment = async (sendData) => {
   const response = await api.post(`/api/recipe/comment`, sendData);
-}
+};
 
 const getComment = async (recipeId) => {
   const response = await api.get(`/api/recipe/recipe/${recipeId}`);
@@ -67,8 +67,21 @@ const deleteComment = async (commentId) => {
 };
 
 const likeRecipe = async (recipe_id) => {
-  const response = await api.post(`/api/recipe/like`,recipe_id);
+  const response = await api.post(`/api/recipe/like`, recipe_id);
   return response.data;
 };
 
-export {getTestRecipes,addRecipe,updateRecipe,deleteRecipe,getRecipes,getRecipe,getComment,getComments,deleteComment,getContents,addComment,likeRecipe};
+export {
+  getTestRecipes,
+  addRecipe,
+  updateRecipe,
+  deleteRecipe,
+  getRecipes,
+  getRecipe,
+  getComment,
+  getComments,
+  deleteComment,
+  getContents,
+  addComment,
+  likeRecipe,
+};
