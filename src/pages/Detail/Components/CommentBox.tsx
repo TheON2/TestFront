@@ -20,9 +20,12 @@ const CommentBox = ({
   const queryClient = useQueryClient();
   const mutation = useMutation(deleteComment, {
     onMutate: async (commentId) => {
-      const oldData = queryClient.getQueryData(["comment", recipeId]);
-      queryClient.setQueryData(["comment", recipeId], (oldComments) =>
-        oldComments.filter((comment) => comment.id !== commentId)
+      const oldData = queryClient.setQueryData(
+        ["comment", recipeId],
+        (oldComments) =>
+          Array.isArray(oldComments)
+            ? oldComments.filter((comment) => comment.id !== commentId)
+            : []
       );
       return oldData;
     },
