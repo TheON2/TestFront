@@ -34,6 +34,7 @@ const CommentBox = ({
   });
 
   const onDeleteComment = useCallback(() => {
+    console.log(commentId);
     mutation.mutate(commentId);
   }, [recipeId, commentId]);
 
